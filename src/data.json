@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "nombre": "Comida para perros",
+    "descripcion": "Comida para perros adultos de razas pequeñas, sin conservantes artificiales ni colorantes.",
+    "precio": 25.99,
+    "categoria": "comida",
+    "imagen": "/src/assets/product/1.webp"
+  },
+  {
+    "id": 2,
+    "nombre": "Comida para gatos",
+    "descripcion": "Comida para gatos adultos, con pollo y arroz, sin saborizantes ni conservantes artificiales.",
+    "precio": 22.99,
+    "categoria": "comida",
+    "imagen": "/src/assets/product/2.webp"
+  },
+  {
+    "id": 3,
+    "nombre": "Collar antipulgas para perros",
+    "descripcion": "Collar antipulgas y garrapatas para perros de razas medianas y grandes, resistente al agua.",
+    "precio": 15.99,
+    "categoria": "higiene",
+    "imagen": "/src/assets/product/3.webp"
+  },
+  {
+    "id": 4,
+    "nombre": "Shampoo para perros",
+    "descripcion": "Shampoo suave para perros con piel sensible, con extracto de avena y aceite de lavanda.",
+    "precio": 12.99,
+    "categoria": "higiene",
+    "imagen": "/src/assets/product/4.webp"
+  },
+  {
+    "id": 5,
+    "nombre": "Juguete para gatos",
+    "descripcion": "Juguete para gatos con plumas y cascabel, perfecto para entretener y estimular su instinto cazador.",
+    "precio": 5.99,
+    "categoria": "juguetes",
+    "imagen": "/src/assets/product/5.webp"
+  },
+  {
+    "id": 6,
+    "nombre": "Juguete para perros",
+    "descripcion": "Juguete para perros en forma de pelota, resistente y duradero, ideal para jugar al aire libre.",
+    "precio": 8.99,
+    "categoria": "juguetes",
+    "imagen": "/src/assets/product/6.webp"
+  },
+  {
+    "id": 7,
+    "nombre": "Cepillo para gatos",
+    "descripcion": "Cepillo para gatos con cerdas suaves, ideal para peinar el pelaje y eliminar el exceso de pelo muerto.",
+    "precio": 9.99,
+    "categoria": "higiene",
+    "imagen": "/src/assets/product/7.webp"
+  },
+  {
+    "id": 8,
+    "nombre": "Cepillo para perros",
+    "descripcion": "Cepillo para perros con cerdas de acero inoxidable, ideal para desenredar y eliminar el pelo muerto.",
+    "precio": 11.99,
+    "categoria": "higiene",
+    "imagen": "/src/assets/product/8.webp"
+  },
+  {
+    "id": 9,
+    "nombre": "Suplemento para perros mayores",
+    "descripcion": "Suplemento para perros mayores, con glucosamina y condroitina, para ayudar a mantener las articulaciones saludables.",
+    "precio": 19.99,
+    "categoria": "suplementos",
+    "imagen": "/src/assets/product/9.webp"
+  },
+  {
+    "id": 10,
+    "nombre": "Antibiótico para gatos",
+    "descripcion": "Antibiótico en pastillas para gatos, para el tratamiento de infecciones bacterianas leves a moderadas.",
+    "precio": 29.99,
+    "categoria": "medicamentos",
+    "imagen": "/src/assets/product/10.webp"
+  }
+]
