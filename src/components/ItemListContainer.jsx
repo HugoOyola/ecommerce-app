@@ -31,25 +31,3 @@ const ItemListContainer = () => {
 };
 
 export default ItemListContainer;
-
-// import Data from "../data";
-// import ItemList from "./ItemList";
-// import { useParams } from "react-router-dom";
-// import Collection from "./Collection";
-
-// const ItemListContainer = () => {
-//   const { categoria } = useParams();
-
-//   const filterProducts = categoria ? Data.filter((product) => product.categoria === categoria) : Data;
-//   console.log(filterProducts);
-
-//   return (
-//     < className="container-products wrapper">
-//       <h2 className="container-products-title">Catálogo de Productos</h2>
-//       <ItemList products={filterProducts} />
-//       <Collection/>
-//     </div>
-//   );
-// };
-
-// export default ItemListContainer;

@@ -4,7 +4,7 @@
 ![Descripción de la imagen](/screenshot.gif)
 
 ## Comenzando 🚀
-Este proyecto es un e-commerce que ofrece productos y servicios relacionados con el cuidado de mascotas. Los clientes pueden buscar productos por categoría, raza, precio y otras características, así como agregarlos al carrito de compras y formulario de registro a través de la plataforma.
+Este proyecto es un e-commerce que ofrece productos y servicios relacionados con el cuidado de mascotas. Los clientes pueden buscar productos por categoría, así como agregarlos al carrito de compras y formulario de orden de compra través de la plataforma.
 
 ## Requerimientos 📄
 - Node.js (v14.15.4 o superior)

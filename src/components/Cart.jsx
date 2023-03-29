@@ -10,14 +10,13 @@ const Cart = () => {
   const groupedCart = getGroupedItems();
   const [showOrderForm, setShowOrderForm] = useState(false);
 
-  const handleRemoveItem = (item) => {
-    removeItem(item.id);
+  const handleRemoveItem = (itemId) => {
+    removeItem(itemId);
   };
 
   const handleAddItem = (item) => {
     const quantity = groupedCart[item.id]?.quantity || 0;
-    const totalQuantity = quantity + 1;
-    if (totalQuantity > item.stock) {
+    if (quantity >= item.stock) {
       alert("No hay suficiente stock disponible.");
       return;
     }
@@ -29,16 +28,18 @@ const Cart = () => {
     if (quantity === 1) {
       return;
     }
+    if (quantity > item.stock) {
+      alert("No hay suficiente stock disponible.");
+      return;
+    }
     removeOneItem(item.id);
   };
 
-  const cartItems = Object.keys(groupedCart).map((id) => {
-    const item = groupedCart[id].item;
-    const quantity = groupedCart[id].quantity;
+  const cartItems = Object.values(groupedCart).map(({ item, quantity }) => {
     const disableAddButton = item.stock === quantity || item.stock < quantity + 1;
     const disableSubtractButton = quantity === 1;
     return (
-      <div className="cart-list" key={id}>
+      <div className="cart-list" key={item.id}>
         <img src={item.imagen} alt={item.nombre} />
         <div className="item-title">
           <h3>{item.nombre}</h3>
@@ -57,7 +58,7 @@ const Cart = () => {
           <p> S/. {(item.precio * quantity).toFixed(2)}</p>
         </div>
         <div className="item-btn-delete">
-          <button onClick={() => handleRemoveItem(item)}>Quitar Producto</button>
+          <button onClick={() => handleRemoveItem(item.id)}>Quitar Producto</button>
         </div>
       </div>
     );
@@ -82,14 +83,14 @@ const Cart = () => {
             <div className="total-price">
               <p>Total: S/. {totalPrice.toFixed(2)}</p>
             </div>
-            <di className="btn-options">
+            <div className="btn-options">
               <button className="btn-clear" onClick={() => clear()}>
                 Vaciar carrito
               </button>
-              <button className="btn-finish" onClick={() => setShowOrderForm(true)}>
+              <button className="btn-checkout" onClick={() => setShowOrderForm(true)}>
                 Finalizar compra
               </button>
-            </di>
+            </div>
             {showOrderForm && <SendOrder groupedCart={groupedCart} totalPrice={totalPrice} clear={clear} />}
           </>
         )}
@@ -99,59 +100,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
-// import React, { useContext } from "react";
-// import { Link } from "react-router-dom";
-// import { CartContext } from "../context/CartContext";
-// import SendOrder from "./SendOrder";
-
-// const Cart = () => {
-//   const { cart, removeItem, clear, getGroupedItems } = useContext(CartContext);
-
-//   const groupedCart = getGroupedItems();
-
-//   const handleRemoveItem = (item) => {
-//     removeItem(item.id);
-//   };
-
-//   const cartItems = Object.keys(groupedCart).map((id) => {
-//     const item = groupedCart[id].item;
-//     const quantity = groupedCart[id].quantity;
-//     return (
-//       <div>
-//         <div key={id}>
-//           <h3>{item.nombre}</h3>
-//           <p>Precio: {item.precio}</p>
-//           <p>Cantidad: {quantity}</p>
-//           {/* <button onClick={() => handleRemoveItem(id)}>Eliminar</button> */}
-//           <button onClick={() => handleRemoveItem(item)}>Eliminar</button>
-//           <hr />
-//         </div>
-//       </div>
-//     );
-//   });
-
-//   const totalPrice = cart.reduce((total, item) => {
-//     return total + item.precio * item.quantity;
-//   }, 0);
-
-//   return (
-//     <>
-//       {cart.length === 0 ? (
-//         <div>
-//           <p>No hay ítems en el carrito</p>
-//           <Link to="/">Volver al catálogo</Link>
-//         </div>
-//       ) : (
-//         <>
-//           {cartItems}
-//           <p>Total: {totalPrice}</p>
-//           <button onClick={() => clear()}>Vaciar carrito</button>
-//           <SendOrder />
-//         </>
-//       )}
-//     </>
-//   );
-// };
-
-// export default Cart;

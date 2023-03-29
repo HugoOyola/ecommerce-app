@@ -68,8 +68,17 @@ const CartContextProvider = ({ children }) => {
 
       if (existingItemIndex >= 0) {
         const newCart = [...prevCart];
-        newCart[existingItemIndex].quantity += quantity;
+        const newQuantity = newCart[existingItemIndex].quantity + quantity;
+        if (newQuantity > item.stock) {
+          newCart[existingItemIndex].quantity = item.stock;
+        } else {
+          newCart[existingItemIndex].quantity = newQuantity;
+        }
         return newCart;
+      }
+
+      if (quantity > item.stock) {
+        quantity = item.stock;
       }
 
       return [...prevCart, { ...item, quantity }];

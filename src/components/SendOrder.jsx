@@ -45,10 +45,11 @@ const SendOrder = ({ groupedCart, totalPrice, clear }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        <h2>Registra tus datos para completar la compra.</h2>
         <input type="text" placeholder="Nombre" value={name} onChange={(e) => setName(e.target.value)} />
         <input type="text" placeholder="Teléfono" value={phone} onChange={(e) => setPhone(e.target.value)} />
         <input type="email" placeholder="Correo Electrónico" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <button type="button" disabled={!cart.length} onClick={handleSubmit}>
+        <button className="btn-success" type="button" disabled={!cart.length} onClick={handleSubmit}>
           Enviar orden
         </button>
       </form>
