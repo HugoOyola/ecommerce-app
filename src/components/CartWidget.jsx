@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
-const CartWidget = ({ count }) => {
+const CartWidget = () => {
+  const { cart } = useContext(CartContext);
+
+  // Calcular la cantidad total de productos en el carrito
+  const totalQuantity = cart.reduce((total, item) => {
+    if (typeof item.quantity === "number") {
+      return total + item.quantity;
+    } else {
+      return total;
+    }
+  }, 0);
+
   return (
-    <div className="cart">
+    <>
       <i className="material-icons">shopping_cart</i>
-      <span className="cart-items">{count}</span>
-    </div>
+      <span className="cart-items">{totalQuantity}</span>
+      Carrito
+    </>
   );
 };
 

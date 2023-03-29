@@ -1,18 +1,31 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext } from "react";
 import ItemCount from "./ItemCount";
+import { CartContext } from "../context/CartContext";
 
 const ItemDetail = ({ product }) => {
-  const { id, nombre, descripcion, precio, imagen } = product;
+  const { id, nombre, descripcion, precio, imagen, cantidad } = product;
+  const { addItem } = useContext(CartContext);
+
+  const handleAddToCart = (quantity) => {
+    const item = {
+      id,
+      nombre,
+      precio,
+      cantidad: quantity,
+      imagen,
+    };
+    addItem(item, quantity);
+  };
 
   return (
-    <div className="card" key={id}>
-      <img src={imagen} alt="Producto 1" />
-      <div className="info">
+    <div className="product-details-container" key={id}>
+      <img className="product-details-thumb" src={imagen} alt={nombre} />
+      <div className="product-details-info">
         <h2>{nombre}</h2>
+        <span className="stock">Stock: {cantidad} unidades</span>
         <p>{descripcion}</p>
-        <p className="price">S/. {precio}</p>
-        <ItemCount stock={5} initialCount={1} />
+        <p className="product-details-price">S/. {precio}</p>
+        <ItemCount stock={cantidad} initialCount={1} onAdd={handleAddToCart} />
       </div>
     </div>
   );

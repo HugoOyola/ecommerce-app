@@ -1,9 +1,58 @@
 :root {
-  font-family: "Ubuntu", sans-serif;
-  font-weight: 400;
+  font-size: 16px;
+  --azul: #131f35;
+  --blanco: #ffffff;
+  --gris: #868686;
+  --mostaza: #f5b746;
+  --salmon: #ea4a4c;
+  --verde: #3f8c96;
 }
 
+::selection {
+  background: var(--gris);
+  color: var(--blanco);
+}
+
+/* Estilos Generales */
 body {
+  height: 100%;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+  color: var(--azul);
+  background-color: var(--blanco);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  color: var(--salmon);
+  margin-top: 0;
+  margin-bottom: 0.75em;
+}
+
+a {
+  color: var(--azul);
+  text-decoration: none;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0.75em;
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
 }

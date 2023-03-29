@@ -1,30 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
-const ItemCount = ({ initialCount, stock, onAdd }) => {
+const ItemCount = ({ stock, initialCount, onAdd }) => {
   const [count, setCount] = useState(initialCount);
+  const [stockCount, setStockCount] = useState(stock);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [cartQuantity, setCartQuantity] = useState(0);
+  const { cart } = useContext(CartContext);
 
-  const handleAdd = () => {
-    if (count < stock) {
+  useEffect(() => {
+    const newCartQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+    setCartQuantity(newCartQuantity);
+  }, [cart]);
+
+  const handleIncrement = () => {
+    if (count < stockCount) {
       setCount(count + 1);
     }
   };
 
-  const handleSubtract = () => {
+  const handleDecrement = () => {
     if (count > 1) {
       setCount(count - 1);
     }
   };
 
+  const handleAddToCart = () => {
+    const totalQuantity = cartQuantity + count;
+    if (totalQuantity > stockCount) {
+      alert("No hay suficiente stock disponible.");
+      return;
+    }
+
+    onAdd(count);
+    setStockCount(stockCount - count);
+    if (count === stockCount) {
+      setIsButtonDisabled(true);
+    }
+  };
+
   return (
     <div className="item-count">
-      <button className="buy-btn" onClick={handleSubtract}>
+      <button className="buy-btn" onClick={handleDecrement}>
         -
       </button>
-      <span>{count}</span>
-      <button className="buy-btn" onClick={handleAdd}>
+      <span className="count"> Cantidad: {count} </span>
+      <button className="buy-btn" onClick={handleIncrement} disabled={count === stockCount || isButtonDisabled}>
         +
       </button>
-      <button className="buy-btn">Agregar al carrito</button>
+      <button className="add-btn" onClick={handleAddToCart} disabled={count > stockCount || isButtonDisabled}>
+        {count === stockCount ? "Sin stock" : "Agregar al carrito"}
+      </button>
     </div>
   );
 };

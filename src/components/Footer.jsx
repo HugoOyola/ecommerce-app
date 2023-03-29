@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer>
       <div className="center">
-        <p>&copy; 2023 Mr. Sabuedo Store - Todos los derechos reservados.</p>
+        <p>&copy; 2023 Mr. Sabueso Veterinaria y Spa - Todos los derechos reservados.</p>
       </div>
     </footer>
   );
